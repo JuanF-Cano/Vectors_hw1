@@ -44,7 +44,7 @@ void erase(unsigned int index) {
 - Finally, inserting the new element at index takes `O(1)`.
 - Overall worst-case time complexity: `O(n)`.
 
-### Erasing an element at a specific index (`erase(index)`).
+### 2. Erasing an element at a specific index (`erase(index)`).
 
 - The operation shifts elements to the left from index + 1 to size_, which takes `O(n - index) ≈ O(n)` in the worst case (if erasing at the beginning). 
 - The size is decremented, which is `O(1)`. 
@@ -88,6 +88,46 @@ Vector<int> removeDuplicates(const Vector<int>& v) {
 - The outer loop runs O(n) times.
 - The inner loop (searching for duplicates) runs O(n) in the worst case.
 - Overall complexity: O(n × n) = O(n²).
+
+---
+# **Dynamic Array Resizing Analysis**
+Graphs are created to analyze the size and capacity data, using python and Google Colab: https://colab.research.google.com/drive/1bu4DRTwN80esIYb4VYtAB35tLM5HzzTv?usp=sharing
+
+Using this code in colab, the 4 graphs are created:
+```python
+import matplotlib.pyplot as plt
+
+file_path = "/content/vector_growth.dat"
+
+with open(file_path, "r", encoding="utf-8") as file:
+    content = file.readlines()
+
+resizes = {}
+current_resize = None
+
+for line in content:
+    line = line.strip()
+    if line.startswith("policy"):
+        current_resize = line
+        resizes[current_resize] = {"size": [], "capacity": []}
+    elif line and current_resize and not line.startswith("size capacity"):
+        size, capacity = map(int, line.split())
+        resizes[current_resize]["size"].append(size)
+        resizes[current_resize]["capacity"].append(capacity)
+
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+axes = axes.flatten()
+
+for i, (resize_type, data) in enumerate(resizes.items()):
+    axes[i].plot(data["size"], data["capacity"], marker='o', linestyle='-')
+    axes[i].set_title(resize_type)
+    axes[i].set_xlabel("Size")
+    axes[i].set_ylabel("Capacity")
+
+plt.tight_layout()
+plt.show()
+
+```
 
 ---
 # **Stack Using a Vector**
@@ -141,4 +181,3 @@ Vector<T> mergeSortedVectors(Vector<T>& v1, Vector<T>& v2) {
   return v;
 }
 ```
-

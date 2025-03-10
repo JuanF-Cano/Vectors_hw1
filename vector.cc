@@ -1,5 +1,8 @@
 #include <iostream>
 #include <cassert>
+#include <fstream>
+#include <ctime>
+#include <cstdlib>
 
 using namespace std;
 
@@ -45,7 +48,7 @@ class Vector { // Vector class of type T --> Vector<T>
 
   private:
     void resize() { // Resize the vector to increase its capacity, using different policies
-      unsigned int capacity2 = capacity_ * 1.5; // capacity_ + 1 || capacity_ + 2 || capacity_ * 2 || capacity_ * 1.5 //...
+      unsigned int capacity2 = capacity_ +1; // capacity_ + 1 || capacity_ + 2 || capacity_ * 2 || capacity_ * 1.5 //...
       T* newStorage = new T[capacity2]; // Create a new storage with the reassigned capacity
       for (unsigned int i = 0; i < size_; i++) { // Copy all elements from the previous storage to the new one
         newStorage[i] = storage_[i];
@@ -256,5 +259,27 @@ int main() {
   Vector<int> mergedVector4 = mergeSortedVectors(vector7, vector8);
   mergedVector4.print(); // Expected: {1,1,1,1,1,1,1,1} */
 
-  return 0;
+  ofstream file("vector_growth.dat", ios::app);
+    if (!file) {
+        cout << "Error opening file!" << endl;
+        return 1;
+    }
+
+    srand(time(nullptr));
+    const int totalInsertions = 1000000;
+    const int logInterval = 1000;
+
+    Vector<int> v;
+    file << "policy+1" << endl << "size, content" << endl;
+    for (int i = 0; i < totalInsertions; i++) {
+      v.push_back((int)(rand() % 100));
+      if ((i + 1) % logInterval == 0) {
+          file << v.size() << " " << v.capacity() << endl;
+      }
+    }
+    file << endl;
+
+    file.close();
+    std::cout << "Results written to vector_growth.dat" << std::endl;
+    return 0;
 }
