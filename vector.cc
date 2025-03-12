@@ -3,8 +3,10 @@
 #include <fstream>
 #include <ctime>
 #include <cstdlib>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 template <typename T>
 class Vector { // Vector class of type T --> Vector<T>
@@ -48,7 +50,7 @@ class Vector { // Vector class of type T --> Vector<T>
 
   private:
     void resize() { // Resize the vector to increase its capacity, using different policies
-      unsigned int capacity2 = capacity_ +1; // capacity_ + 1 || capacity_ + 2 || capacity_ * 2 || capacity_ * 1.5 //...
+      unsigned int capacity2 = capacity_ * 2; // capacity_ + 1 || capacity_ + 2 || capacity_ * 2 || capacity_ * 1.5 //...
       T* newStorage = new T[capacity2]; // Create a new storage with the reassigned capacity
       for (unsigned int i = 0; i < size_; i++) { // Copy all elements from the previous storage to the new one
         newStorage[i] = storage_[i];
@@ -195,7 +197,7 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
     unsigned int size() const { return storage_.size(); } // Returns the size of the stack
 };
 
-int main() {
+//int main() {
   /* Vector<int> myVector;
 
   // Test push_back
@@ -259,27 +261,87 @@ int main() {
   Vector<int> mergedVector4 = mergeSortedVectors(vector7, vector8);
   mergedVector4.print(); // Expected: {1,1,1,1,1,1,1,1} */
 
-  ofstream file("vector_growth.dat", ios::app);
-    if (!file) {
-        cout << "Error opening file!" << endl;
-        return 1;
+  /* ofstream fileVectorGrowth("vector_growth.dat", ios::app);
+  if (!fileVectorGrowth) {
+      cout << "Error opening fileVectorGrowth!" << endl;
+      return 1;
+  }
+
+  srand(time(nullptr));
+  const int totalInsertions = 1000000;
+  const int logInterval = 1000;
+
+  Vector<int> v;
+  fileVectorGrowth << "policy*2" << endl << "size, capacity" << endl;
+  for (int i = 0; i < totalInsertions; i++) {
+    v.push_back((int)(rand() % 100));
+    if ((i + 1) % logInterval == 0) {
+        fileVectorGrowth << v.size() << " " << v.capacity() << endl;
     }
+  }
 
-    srand(time(nullptr));
-    const int totalInsertions = 1000000;
-    const int logInterval = 1000;
+  fileVectorGrowth.close();
+  std::cout << "Results written to vector_growth.dat" << std::endl; */
 
-    Vector<int> v;
-    file << "policy+1" << endl << "size, content" << endl;
-    for (int i = 0; i < totalInsertions; i++) {
-      v.push_back((int)(rand() % 100));
-      if ((i + 1) % logInterval == 0) {
-          file << v.size() << " " << v.capacity() << endl;
-      }
-    }
-    file << endl;
+  /* ofstream fileInsertTimes("insertion_times.dat", ios::app);
+  if (!fileInsertTimes) {
+    cout << "Error opening fileInsertTimes!" << endl;
+    return 1;
+  }
 
-    file.close();
-    std::cout << "Results written to vector_growth.dat" << std::endl;
-    return 0;
-}
+  const int insertions = 100000;
+  
+  Vector<int> v1;
+  Vector<int> v2;
+
+  fileInsertTimes << "Insertion_Index Worst_Case_Time(us) Best_Case_Time(us)" << endl;
+
+  for (int i = 0; i < insertions; i++) {
+    auto start = high_resolution_clock::now();
+    v1.insert(0, i);
+    auto end = high_resolution_clock::now();
+
+    double time_taken = duration<double, microseconds::period>(end - start).count();
+    fileInsertTimes << i + 1 << " " << time_taken;
+    start = high_resolution_clock::now();
+    v2.insert(v2.size(), i);
+    end = high_resolution_clock::now();
+    time_taken = duration<double, microseconds::period>(end - start).count();
+    fileInsertTimes << " " << time_taken << endl;
+    } 
+    fileInsertTimes.close();
+    */
+
+  /* ofstream fileEraseTimes("erase_times.dat", ios::app);
+  if (!fileEraseTimes) {
+    cout << "Error opening erase_times!" << endl;
+    return 1;
+  }
+
+  const int insertions = 100000;
+  
+  Vector<int> v1(insertions);
+  Vector<int> v2(insertions);
+
+  fileEraseTimes << "Erase_Index Worst_Case_Time(us) Best_Case_Time(us)" << endl;
+
+  for (int i = insertions; i > 0; i--) {
+    auto start = high_resolution_clock::now();
+    v1.erase(0);
+    auto end = high_resolution_clock::now();
+    
+    double time_taken = duration<double, microseconds::period>(end - start).count();
+    fileEraseTimes << i << " " << time_taken;
+    start = high_resolution_clock::now();
+    v2.erase(v2.size() - 1);
+    end = high_resolution_clock::now();
+    time_taken = duration<double, microseconds::period>(end - start).count();
+    fileEraseTimes << " " << time_taken << endl;
+  }
+
+  fileEraseTimes.close(); */
+
+  
+  
+  // return 0;
+// }
