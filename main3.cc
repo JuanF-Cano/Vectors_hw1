@@ -1,38 +1,39 @@
 #include <iostream>
 #include "vector.h"
 
+using namespace std;
+
 int main() {
-  Stack<int> s;
+    Stack<int> s;
 
-  // Verificar que la pila inicia vacía
-  cout << "Stack initially empty: " << (s.empty() ? "Yes" : "No") << endl;
+    // Check that the stack is initially empty
+    cout << "Stack initially empty: " << (s.empty() ? "Yes" : "No") << endl; // Expected: Yes
 
-  // Probar push
-  s.push(10);
-  s.push(20);
-  s.push(30);
-  cout << "After pushing 10, 20, 30, stack empty? " << (s.empty() ? "Yes" : "No") << endl;
+    // Test push
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    cout << "After pushing 10, 20, 30, stack empty? " << (s.empty() ? "Yes" : "No") << endl; // Expected: No
 
-  // Probar top
-  cout << "Top element (before pop): " << s.top() << endl;
+    // Test top
+    cout << "Top element (before pop): " << s.top() << endl; // Expected: 30
 
-  // Probar pop
-  s.pop();
-  cout << "After one pop, top element: " << s.top() << endl;
-  s.pop();
-  cout << "After another pop, top element: " << s.top() << endl;
+    // Test pop
+    s.pop();
+    cout << "After one pop, top element: " << s.top() << endl; // Expected: 20
+    s.pop();
+    cout << "After another pop, top element: " << s.top() << endl; // Expected: 10
 
-  // Verificar tamaño
-  cout << "Stack size: " << s.size() << endl;
+    // Check size
+    cout << "Stack size: " << s.size() << endl; // Expected: 1
 
-  // Vaciar la pila
-  s.pop();
-  cout << "Stack empty after popping all elements? " << (s.empty() ? "Yes" : "No") << endl;
+    // Empty the stack
+    s.pop();
+    cout << "Stack empty after popping all elements? " << (s.empty() ? "Yes" : "No") << endl; // Expected: Yes
 
-  // Probar push después de vaciar
-  s.push(50);
-  cout << "After pushing 50, top element: " << s.top() << endl;
+    // Test push after emptying the stack
+    s.push(50);
+    cout << "After pushing 50, top element: " << s.top() << endl; // Expected: 50
 
-  cout << "All Stack tests completed!" << endl;
-  return 0;
+    return 0;
 }
