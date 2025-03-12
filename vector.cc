@@ -197,7 +197,7 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
     unsigned int size() const { return storage_.size(); } // Returns the size of the stack
 };
 
-//int main() {
+int main() {
   /*  Vector<int> vector1 = {1, 3, 5};
   Vector<int> vector2 = {2, 4, 6};
   Vector<int> mergedVector = mergeSortedVectors(vector1, vector2);
@@ -218,28 +218,6 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
   Vector<int> vector8 = {1,1,1,1};
   Vector<int> mergedVector4 = mergeSortedVectors(vector7, vector8);
   mergedVector4.print(); // Expected: {1,1,1,1,1,1,1,1} */
-
-  /* ofstream fileVectorGrowth("vector_growth.dat", ios::app);
-  if (!fileVectorGrowth) {
-      cout << "Error opening fileVectorGrowth!" << endl;
-      return 1;
-  }
-
-  srand(time(nullptr));
-  const int totalInsertions = 1000000;
-  const int logInterval = 1000;
-
-  Vector<int> v;
-  fileVectorGrowth << "policy*2" << endl << "size, capacity" << endl;
-  for (int i = 0; i < totalInsertions; i++) {
-    v.push_back((int)(rand() % 100));
-    if ((i + 1) % logInterval == 0) {
-        fileVectorGrowth << v.size() << " " << v.capacity() << endl;
-    }
-  }
-
-  fileVectorGrowth.close();
-  std::cout << "Results written to vector_growth.dat" << std::endl; */
 
   /* ofstream fileInsertTimes("insertion_times.dat", ios::app);
   if (!fileInsertTimes) {
@@ -299,7 +277,60 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
 
   fileEraseTimes.close(); */
 
+  /* ofstream fileRemoveTimes("removeDuplicates_times.dat", ios::app);
+  if (!fileRemoveTimes) {
+    cout << "Error opening removeDuplicates_times!" << endl;
+    return 1;
+  }
+
+  const int insertions = 10000;
+  
+  Vector<int> v2;
+  
+  fileRemoveTimes << "Function_Index Worst_Case_Time(us) Best_Case_Time(us)" << endl;
+  
+  for (int i = 1; i <= insertions; i++) {
+    Vector<int> v1(i);
+    v2.push_back(i);
+
+    auto start = high_resolution_clock::now();
+    removeDuplicates(v2);
+    auto end = high_resolution_clock::now();
+    
+    double time_taken = duration<double, microseconds::period>(end - start).count();
+    fileRemoveTimes << i << " " << time_taken;
+    start = high_resolution_clock::now();
+    removeDuplicates(v1);
+    end = high_resolution_clock::now();
+    time_taken = duration<double, microseconds::period>(end - start).count();
+    fileRemoveTimes << " " << time_taken << endl;
+  }
+
+  fileRemoveTimes.close(); */
+
+  /* ofstream fileVectorGrowth("vector_growth.dat", ios::app);
+  if (!fileVectorGrowth) {
+      cout << "Error opening fileVectorGrowth!" << endl;
+      return 1;
+  }
+
+  srand(time(nullptr));
+  const int totalInsertions = 1000000;
+  const int logInterval = 1000;
+
+  Vector<int> v;
+  fileVectorGrowth << "policy*2"; // policy+1, policy+2, policy*1.5, policy*2
+  fileVectorGrowth << endl << "size, capacity" << endl;
+  for (int i = 0; i < totalInsertions; i++) {
+    v.push_back((int)(rand() % 100));
+    if ((i + 1) % logInterval == 0) {
+        fileVectorGrowth << v.size() << " " << v.capacity() << endl;
+    }
+  }
+
+  fileVectorGrowth.close(); */
+
   
   
-  // return 0;
-// }
+  return 0;
+}
