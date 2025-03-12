@@ -198,49 +198,7 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
 };
 
 //int main() {
-  /* Vector<int> myVector;
-
-  // Test push_back
-  myVector.push_back(10);
-  myVector.push_back(20);
-  myVector.push_back(30);
-
-  cout << myVector.size() << endl; // Expected: 3
-  cout << myVector.capacity() << endl; // Expected: Initial capacity, e.g., 4 or 8
-
-  // Test pop_back
-  myVector.pop_back();
-  cout << myVector.size() << endl; // Expected: 2
-
-  // Test at with valid and invalid indices
-  cout << myVector.at(0) << endl; // Expected: 10
-  cout << myVector.at(1) << endl; // Expected: 20
-
-  // Border case: Accessing an out-of-bounds index
-  cout << myVector.at(2) << endl; // Should crash!
-
-  // Border case: pop_back on empty vector
-  Vector<int> emptyVector;
-  emptyVector.pop_back(); // should crash! 
-  
-  Vector<int> numbers = {1, 2, 2, 3, 4, 4, 5};
-  Vector<int> uniqueNumbers = removeDuplicates(numbers);
-  
-  uniqueNumbers.print(); // Expected: {1, 2, 3, 4, 5}
-  
-  Vector<int> numbers2 = {1,1,1,1,1,1};
-  Vector<int> uniqueNumbers2 = removeDuplicates(numbers2);
-  uniqueNumbers2.print(); // Expected: {1}
-  
-  Vector<int> numbers3 = {};
-  Vector<int> uniqueNumbers3 = removeDuplicates(numbers3);
-  uniqueNumbers3.print(); // Expected: {}
-  
-  Vector<int> numbers4 = {1};
-  Vector<int> uniqueNumbers4 = removeDuplicates(numbers4);
-  uniqueNumbers4.print(); // Expected: {1}
-
-  Vector<int> vector1 = {1, 3, 5};
+  /*  Vector<int> vector1 = {1, 3, 5};
   Vector<int> vector2 = {2, 4, 6};
   Vector<int> mergedVector = mergeSortedVectors(vector1, vector2);
   

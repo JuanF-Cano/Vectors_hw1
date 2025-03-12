@@ -131,4 +131,23 @@ class Vector {
     }
 };
 
+  Vector<int> removeDuplicates(const Vector<int>& v) { 
+    Vector<int> v2; 
+    bool isDuplicate; 
+    for (unsigned int i = 0; i < v.size(); i++) { 
+      int element = v[i]; 
+      isDuplicate = false; 
+      for (unsigned int j = 0; j < v2.size(); j++) { 
+        if (v2[j] == element) { 
+          isDuplicate = true; 
+          break;
+        }
+      }
+      if (!isDuplicate) {
+        v2.push_back(element);
+      }
+    }
+    return v2;
+  }
+
 #endif
