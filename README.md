@@ -150,8 +150,9 @@ class Stack {
 };
 ```
 
+---
 # **Merge Sorted Vectors**
-The file `./vector.cc` include, on lines 158, the Stack class which is using the vector data struct.
+The file `./vector.cc` include, on lines 164, the mergeSortedVectors function.
 
 This function creates a vector that stores the elements of the two vectors in order, using logic similar to MergeSort.
 
