@@ -197,8 +197,9 @@ class Stack { // Stack class (Follows the LIFO (Last In, First Out) principle)
     unsigned int size() const { return storage_.size(); } // Returns the size of the stack
 };
 
+/* 
 int main() {
-  /* ofstream fileInsertTimes("insertion_times.dat", ios::app);
+  ofstream fileInsertTimes("insertion_times.dat", ios::app);
   if (!fileInsertTimes) {
     cout << "Error opening fileInsertTimes!" << endl;
     return 1;
@@ -223,11 +224,12 @@ int main() {
     end = high_resolution_clock::now();
     time_taken = duration<double, microseconds::period>(end - start).count();
     fileInsertTimes << " " << time_taken << endl;
-    } 
-    fileInsertTimes.close();
-    */
+  } 
+  
+  fileInsertTimes.close();
+   
 
-  /* ofstream fileEraseTimes("erase_times.dat", ios::app);
+  ofstream fileEraseTimes("erase_times.dat", ios::app);
   if (!fileEraseTimes) {
     cout << "Error opening erase_times!" << endl;
     return 1;
@@ -254,9 +256,9 @@ int main() {
     fileEraseTimes << " " << time_taken << endl;
   }
 
-  fileEraseTimes.close(); */
+  fileEraseTimes.close();
 
-  /* ofstream fileRemoveTimes("removeDuplicates_times.dat", ios::app);
+  ofstream fileRemoveTimes("removeDuplicates_times.dat", ios::app);
   if (!fileRemoveTimes) {
     cout << "Error opening removeDuplicates_times!" << endl;
     return 1;
@@ -285,9 +287,9 @@ int main() {
     fileRemoveTimes << " " << time_taken << endl;
   }
 
-  fileRemoveTimes.close(); */
+  fileRemoveTimes.close();
 
-  /* ofstream fileVectorGrowth("vector_growth.dat", ios::app);
+  ofstream fileVectorGrowth("vector_growth.dat", ios::app);
   if (!fileVectorGrowth) {
       cout << "Error opening fileVectorGrowth!" << endl;
       return 1;
@@ -307,9 +309,7 @@ int main() {
     }
   }
 
-  fileVectorGrowth.close(); */
+  fileVectorGrowth.close();
 
-  
-  
   return 0;
-}
+} */
